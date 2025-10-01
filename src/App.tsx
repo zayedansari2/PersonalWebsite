@@ -583,9 +583,7 @@ export default function Portfolio() {
               >
                 <div className="space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <h3 className="text-xl font-medium">
-                      Volunteer
-                    </h3>
+                    <h3 className="text-xl font-medium">Volunteer</h3>
                     <span
                       className={`text-sm font-mono ${
                         isDark ? "text-zinc-500" : "text-zinc-600"
@@ -913,11 +911,7 @@ export default function Portfolio() {
         </footer>
       </main>
 
-      <div
-        className={`fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t pointer-events-none ${
-          isDark ? "from-zinc-950 via-zinc-950/80" : "from-white via-white/80"
-        }`}
-      ></div>
+      {/* removed bottom glow to ensure clean white footer */}
     </div>
   );
 }

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Ensure the entire page background is white so there are no dark borders */
+html, body, #root {
+  background-color: #fff;
+  min-height: 100%;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

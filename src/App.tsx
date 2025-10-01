@@ -584,7 +584,7 @@ export default function Portfolio() {
                 <div className="space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <h3 className="text-xl font-medium">
-                      Basketball Team Member
+                      Volunteer
                     </h3>
                     <span
                       className={`text-sm font-mono ${

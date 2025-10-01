@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(true);
+  // Theme is fixed to light mode
+  const isDark = false;
   const [activeSection, setActiveSection] = useState("");
   // store section elements; typed as HTMLElement or null
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
@@ -27,10 +28,6 @@ export default function Portfolio() {
 
     return () => observer.disconnect();
   }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
@@ -421,6 +418,7 @@ export default function Portfolio() {
                     "Scikit-learn",
                   ],
                   category: "Machine Learning",
+                  link: "https://huggingface.co/zayedansari/HamiltonMLModel",
                 },
               ].map((project, index) => (
                 <article
@@ -596,25 +594,16 @@ export default function Portfolio() {
                       09/2019 — 06/2023
                     </span>
                   </div>
-                  <div
-                    className={`text-lg ${
-                      isDark ? "text-zinc-400" : "text-zinc-600"
-                    }`}
-                  >
-                    Juanita High School
-                  </div>
-                  <div className={isDark ? "text-zinc-500" : "text-zinc-500"}>
-                    Kirkland, Washington
-                  </div>
-                  <p
-                    className={`leading-relaxed ${
-                      isDark ? "text-zinc-400" : "text-zinc-600"
-                    }`}
-                  >
-                    4-year varsity basketball player demonstrating commitment,
-                    teamwork, and leadership. Balanced rigorous athletic
-                    training with academic excellence in AP courses including
-                    Computer Science, Calculus, and Statistics.
+                  <div className="text-lg text-zinc-600">MAPS MCRC</div>
+                  <div className="text-zinc-500">Redmond, Washington</div>
+                  <p className="leading-relaxed text-zinc-600">
+                    Volunteered with MAPS MCRC in Redmond, WA, supporting
+                    programs that provide essential resources to individuals and
+                    families in need. Assisted with community outreach
+                    initiatives, coordinated donation drives, and helped connect
+                    underserved groups with food, housing, and social services.
+                    Collaborated with diverse teams to expand the organization’s
+                    impact and strengthen community engagement.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-4">
                     {[
@@ -680,18 +669,7 @@ export default function Portfolio() {
                   description:
                     "Experimenting with LLMs, fine-tuning models, and exploring new AI technologies. Always learning about the latest developments in machine learning.",
                 },
-                {
-                  icon: "📚",
-                  title: "Tech Blogs",
-                  description:
-                    "Reading about software engineering, system design, and AI research. Staying updated with industry trends and best practices.",
-                },
-                {
-                  icon: "🎮",
-                  title: "Gaming",
-                  description:
-                    "Enjoying strategy and sports games. Interested in game development and the intersection of AI with gaming experiences.",
-                },
+                // removed Tech Blogs and Gaming per user's request
               ].map((hobby, index) => (
                 <div
                   key={index}
@@ -837,26 +815,9 @@ export default function Portfolio() {
                 <div className="space-y-4">
                   <a
                     href="mailto:zayedansari112@gmail.com"
-                    className={`group flex items-center gap-3 transition-colors duration-300 ${
-                      isDark ? "hover:text-zinc-400" : "hover:text-zinc-600"
-                    }`}
+                    className="inline-flex items-center gap-3 px-4 py-2 bg-zinc-900 text-white rounded-lg hover:opacity-90 transition-opacity duration-200"
                   >
-                    <span className="text-base sm:text-lg">
-                      zayedansari112@gmail.com
-                    </span>
-                    <svg
-                      className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                    Contact
                   </a>
                 </div>
               </div>
@@ -886,7 +847,7 @@ export default function Portfolio() {
                   {
                     name: "Resume",
                     handle: "View PDF",
-                    url: "https://drive.google.com/file/d/19lVuquYeB-fA162N32cFbT9N8M0PWzrF/view?usp=share_link",
+                    url: "https://drive.google.com/file/d/1ZGSG2m-CGPVwFy6iTM_VrqAKVIl3euOJ/view?usp=sharing",
                   },
                   {
                     name: "University",
@@ -947,47 +908,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <button
-                onClick={toggleTheme}
-                className={`group p-3 rounded-lg border transition-all duration-300 ${
-                  isDark
-                    ? "border-zinc-800 hover:border-zinc-600"
-                    : "border-zinc-200 hover:border-zinc-400"
-                }`}
-                aria-label="Toggle theme"
-              >
-                {isDark ? (
-                  <svg
-                    className={`w-4 h-4 transition-colors duration-300 ${
-                      isDark
-                        ? "text-zinc-500 group-hover:text-zinc-100"
-                        : "text-zinc-600 group-hover:text-zinc-900"
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-1.4 3.177a1 1 0 100 2h1a1 1 0 100-2h-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className={`w-4 h-4 transition-colors duration-300 ${
-                      isDark
-                        ? "text-zinc-500 group-hover:text-zinc-100"
-                        : "text-zinc-600 group-hover:text-zinc-900"
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </svg>
-                )}
-              </button>
-            </div>
+            <div />
           </div>
         </footer>
       </main>

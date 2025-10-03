@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ContactForm from "./components/ContactForm";
 import "./App.css";
 
 export default function Portfolio() {
@@ -7,6 +8,8 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("");
   // store section elements; typed as HTMLElement or null
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+
+  // Contact is handled via Formspree form component (no email exposed)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,13 +58,7 @@ export default function Portfolio() {
               key={section}
               onClick={() => scrollToSection(section)}
               className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                activeSection === section
-                  ? isDark
-                    ? "bg-zinc-100"
-                    : "bg-zinc-900"
-                  : isDark
-                  ? "bg-zinc-700 hover:bg-zinc-500"
-                  : "bg-zinc-300 hover:bg-zinc-500"
+                activeSection === section ? "bg-zinc-900" : "bg-zinc-300 hover:bg-zinc-500"
               }`}
               aria-label={`Navigate to ${section}`}
             />
@@ -98,13 +95,9 @@ export default function Portfolio() {
                       Ansari
                     </span>
                   </h1>
-                  <a
-                    href="mailto:zayedansari112@gmail.com"
-                    className={`group px-4 py-2 border rounded-lg transition-all duration-300 hover:shadow-sm text-sm ${
-                      isDark
-                        ? "border-zinc-800 hover:border-zinc-600"
-                        : "border-zinc-300 hover:border-zinc-500"
-                    }`}
+                  <button
+                    onClick={() => scrollToSection("connect")}
+                    className="group px-4 py-2 border rounded-lg transition-all duration-300 hover:shadow-sm text-sm border-zinc-900 text-zinc-900 bg-white hover:border-zinc-700"
                   >
                     <div className="flex items-center gap-2">
                       <span>Contact</span>
@@ -122,7 +115,7 @@ export default function Portfolio() {
                         />
                       </svg>
                     </div>
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -393,7 +386,7 @@ export default function Portfolio() {
                 {
                   title: "Local RAG AI Agent",
                   description:
-                    "Built a local Retrieval-Augmented Generation (RAG) agent with Ollama, LangChain, and ChromaDB, enabling offline, cost-free AI inference without external APIs. Implemented semantic search with vector embeddings and achieved 90% accuracy on domain-specific queries while maintaining complete data privacy.",
+                    "Built a local Retrieval-Augmented Generation (RAG) agent with Ollama, LangChain, and ChromaDB, enabling offline, cost-free AI inference without external APIs. Engineered a web scraping + data cleaning pipeline using BeautifulSoup to extract car knowledge from Wikipedia, storing processed data in CSV + ChromaDB vector store for domain-specific retrieval and Q&A.",
                   tech: ["Ollama", "LangChain", "ChromaDB", "Python"],
                   category: "AI/ML",
                   link: "https://github.com/zayedansari2/LocalRAGAgent",
@@ -769,12 +762,13 @@ export default function Portfolio() {
                   category: "Frameworks & Libraries",
                   skills: [
                     "React",
+                    "React Native",
+                    "Expo",
                     "Next.js",
                     "Vite",
                     "Tailwind CSS",
                     "FastAPI",
                     "Node.js",
-                    "Express",
                     "LangChain",
                   ],
                 },
@@ -800,7 +794,6 @@ export default function Portfolio() {
                     "Linux/Unix",
                     "CI/CD",
                     "Caching",
-                    "Vector Databases",
                   ],
                 },
               ].map((skillGroup, index) => (
@@ -855,12 +848,7 @@ export default function Portfolio() {
                 </p>
 
                 <div className="space-y-4">
-                  <a
-                    href="mailto:zayedansari112@gmail.com"
-                    className="inline-flex items-center gap-3 px-4 py-2 bg-zinc-900 text-white rounded-lg hover:opacity-90 transition-opacity duration-200"
-                  >
-                    Contact
-                  </a>
+                  <ContactForm />
                 </div>
               </div>
             </div>
@@ -889,7 +877,7 @@ export default function Portfolio() {
                   {
                     name: "Resume",
                     handle: "View PDF",
-                    url: "https://drive.google.com/file/d/1ZGSG2m-CGPVwFy6iTM_VrqAKVIl3euOJ/view?usp=sharing",
+                    url: "https://drive.google.com/file/d/1J-rpJTQIBHxxVtwu0fc-wbVm6Os7K1Gx/view?usp=sharing",
                   },
                   {
                     name: "University",

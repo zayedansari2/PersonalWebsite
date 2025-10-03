@@ -420,85 +420,129 @@ export default function Portfolio() {
                   category: "Machine Learning",
                   link: "https://huggingface.co/zayedansari/HamiltonMLModel",
                 },
-              ].map((project, index) => (
-                <article
-                  key={index}
-                  className={`group p-6 sm:p-8 border rounded-lg transition-all duration-500 hover:shadow-lg cursor-pointer ${
-                    isDark
-                      ? "border-zinc-800 hover:border-zinc-600"
-                      : "border-zinc-200 hover:border-zinc-400"
-                  }`}
-                >
-                  <div className="space-y-4">
-                    <div
-                      className={`flex items-center justify-between text-xs font-mono ${
-                        isDark ? "text-zinc-500" : "text-zinc-600"
-                      }`}
-                    >
-                      <span>{project.category}</span>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`transition-colors duration-300 ${
-                            isDark
-                              ? "hover:text-zinc-100"
-                              : "hover:text-zinc-900"
-                          }`}
+              ].map((project, index) =>
+                project.link ? (
+                  <a
+                    key={index}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group block p-6 sm:p-8 border rounded-lg transition-all duration-500 hover:shadow-lg cursor-pointer ${
+                      isDark
+                        ? "border-zinc-800 hover:border-zinc-600"
+                        : "border-zinc-200 hover:border-zinc-400"
+                    }`}
+                  >
+                    <div className="space-y-4">
+                      <div
+                        className={`flex items-center justify-between text-xs font-mono ${
+                          isDark ? "text-zinc-500" : "text-zinc-600"
+                        }`}
+                      >
+                        <span>{project.category}</span>
+                        <svg
+                          className="w-4 h-4 transition-colors duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </div>
+
+                      <h3
+                        className={`text-lg sm:text-xl font-medium transition-colors duration-300 ${
+                          isDark
+                            ? "group-hover:text-zinc-400"
+                            : "group-hover:text-zinc-600"
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
+
+                      <p
+                        className={`leading-relaxed ${
+                          isDark ? "text-zinc-400" : "text-zinc-600"
+                        }`}
+                      >
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className={`px-2 py-1 text-xs border rounded-full ${
+                              isDark
+                                ? "border-zinc-800 text-zinc-500"
+                                : "border-zinc-200 text-zinc-600"
+                            }`}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                        </a>
-                      )}
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+                  </a>
+                ) : (
+                  <article
+                    key={index}
+                    className={`group p-6 sm:p-8 border rounded-lg transition-all duration-500 hover:shadow-lg cursor-pointer ${
+                      isDark
+                        ? "border-zinc-800 hover:border-zinc-600"
+                        : "border-zinc-200 hover:border-zinc-400"
+                    }`}
+                  >
+                    <div className="space-y-4">
+                      <div
+                        className={`flex items-center justify-between text-xs font-mono ${
+                          isDark ? "text-zinc-500" : "text-zinc-600"
+                        }`}
+                      >
+                        <span>{project.category}</span>
+                      </div>
 
-                    <h3
-                      className={`text-lg sm:text-xl font-medium transition-colors duration-300 ${
-                        isDark
-                          ? "group-hover:text-zinc-400"
-                          : "group-hover:text-zinc-600"
-                      }`}
-                    >
-                      {project.title}
-                    </h3>
+                      <h3
+                        className={`text-lg sm:text-xl font-medium transition-colors duration-300 ${
+                          isDark
+                            ? "group-hover:text-zinc-400"
+                            : "group-hover:text-zinc-600"
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
 
-                    <p
-                      className={`leading-relaxed ${
-                        isDark ? "text-zinc-400" : "text-zinc-600"
-                      }`}
-                    >
-                      {project.description}
-                    </p>
+                      <p
+                        className={`leading-relaxed ${
+                          isDark ? "text-zinc-400" : "text-zinc-600"
+                        }`}
+                      >
+                        {project.description}
+                      </p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`px-2 py-1 text-xs border rounded-full ${
-                            isDark
-                              ? "border-zinc-800 text-zinc-500"
-                              : "border-zinc-200 text-zinc-600"
-                          }`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className={`px-2 py-1 text-xs border rounded-full ${
+                              isDark
+                                ? "border-zinc-800 text-zinc-500"
+                                : "border-zinc-200 text-zinc-600"
+                            }`}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                )
+              )}
             </div>
           </div>
         </section>
